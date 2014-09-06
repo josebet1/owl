@@ -28,5 +28,18 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>FacebookAppID</key>
+	<string>583177908454545</string>
+	<key>FacebookDisplayName</key>
+	<string>Owl</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb583177908454545</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

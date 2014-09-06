@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B0BA0925-A5C9-4BF6-A86C-D8F87EF59AF0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Owl</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B056D1D1-EBA2-4CF2-B319-83D8AB823E8F</key>
+		<string>https://github.com/josebet1/owl.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Owl/Owl.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B056D1D1-EBA2-4CF2-B319-83D8AB823E8F</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/josebet1/owl.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B056D1D1-EBA2-4CF2-B319-83D8AB823E8F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B056D1D1-EBA2-4CF2-B319-83D8AB823E8F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>owl</string>
+		</dict>
+	</array>
+</dict>
+</plist>

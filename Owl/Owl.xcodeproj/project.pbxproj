@@ -14,6 +14,7 @@
 		BE3BC91219BBB56B00DE8A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3BC91019BBB56B00DE8A8C /* Main.storyboard */; };
 		BE3BC91419BBB56B00DE8A8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3BC91319BBB56B00DE8A8C /* Images.xcassets */; };
 		BE3BC92019BBB56B00DE8A8C /* OwlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3BC91F19BBB56B00DE8A8C /* OwlTests.m */; };
+		BEF6FD8A19BBB98400A840A9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF6FD8919BBB98400A840A9 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		BE3BC91919BBB56B00DE8A8C /* OwlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OwlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3BC91E19BBB56B00DE8A8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE3BC91F19BBB56B00DE8A8C /* OwlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OwlTests.m; sourceTree = "<group>"; };
+		BEF6FD8919BBB98400A840A9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF6FD8A19BBB98400A840A9 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		BE3BC8F719BBB56B00DE8A8C = {
 			isa = PBXGroup;
 			children = (
+				BEF6FD8919BBB98400A840A9 /* FacebookSDK.framework */,
 				BE3BC90219BBB56B00DE8A8C /* Owl */,
 				BE3BC91C19BBB56B00DE8A8C /* OwlTests */,
 				BE3BC90119BBB56B00DE8A8C /* Products */,
@@ -336,6 +340,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Owl",
+					/Users/jasonscharff/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = Owl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -347,6 +356,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Owl",
+					/Users/jasonscharff/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = Owl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -408,6 +422,7 @@
 				BE3BC92519BBB56B00DE8A8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE3BC92619BBB56B00DE8A8C /* Build configuration list for PBXNativeTarget "OwlTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +431,7 @@
 				BE3BC92819BBB56B00DE8A8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
