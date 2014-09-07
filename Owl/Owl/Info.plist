@@ -42,5 +42,9 @@
 			</array>
 		</dict>
 	</array>
+	<key>TWITTER_CONSUMER_KEY</key>
+	<string>IF4CBAYuBs8isujsO8Pmfra8o</string>
+	<key>TWITTER_CONSUMER_SECRET</key>
+	<string>JSRH86IMnJvWj9EfszzgDbjzXiYwh5ibMPaBW1byFAaQKHHxt6</string>
 </dict>
 </plist>

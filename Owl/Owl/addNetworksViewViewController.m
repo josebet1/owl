@@ -8,6 +8,8 @@
 
 #import "addNetworksViewViewController.h"
 #import "ENSDK.h"
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
 
 @interface addNetworksViewViewController ()
 
@@ -27,6 +29,35 @@
 {
     [self performSegueWithIdentifier:@"snapView" sender:self];
 }
+
+- (IBAction)addTwitter:(id)sender
+{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    [account requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error)
+     {
+         // Did user allow us access?
+         if (granted == YES)
+         {
+             // Populate array with all available Twitter accounts
+             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+            ACAccount *twitterAcount = [arrayOfAccounts objectAtIndex:0];
+         }
+         
+     }];
+     
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 -(void)setBackground
 {
@@ -68,8 +99,6 @@
 
 -(void)prepNavBar
 {
-    
-    
     UIColor *color = [self colorWithHexString:@"ffffff"];
     self.navigationController.navigationBar.tintColor = color;
     
