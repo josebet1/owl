@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *evernoteButton;
+@property (strong, nonatomic) IBOutlet UILabel *header;
 
 
 

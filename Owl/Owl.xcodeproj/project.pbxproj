@@ -105,6 +105,7 @@
 		BE58CCE119BBECC900672B16 /* ENNotebookPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58CC8A19BBECC900672B16 /* ENNotebookPickerView.m */; };
 		BE58CCE219BBECC900672B16 /* ENSaveToEvernoteActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58CC8C19BBECC900672B16 /* ENSaveToEvernoteActivity.m */; };
 		BE58CCE319BBECC900672B16 /* ENSaveToEvernoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58CC8E19BBECC900672B16 /* ENSaveToEvernoteViewController.m */; };
+		BEA3436F19BC3A460013D1D5 /* twitterWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA3436E19BC3A460013D1D5 /* twitterWebViewController.m */; };
 		BEB541DC19BBF08900300D63 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB541DB19BBF08900300D63 /* libxml2.dylib */; };
 		BEB541DF19BC015600300D63 /* snapchatAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB541DE19BC015600300D63 /* snapchatAddViewController.m */; };
 		BEF5343B19BC0885009B2D8B /* OwlBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BEF5343A19BC0885009B2D8B /* OwlBackground.png */; };
@@ -324,6 +325,8 @@
 		BE58CC8D19BBECC900672B16 /* ENSaveToEvernoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENSaveToEvernoteViewController.h; sourceTree = "<group>"; };
 		BE58CC8E19BBECC900672B16 /* ENSaveToEvernoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ENSaveToEvernoteViewController.m; sourceTree = "<group>"; };
 		BE58CC8F19BBECC900672B16 /* evernote-sdk-ios-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "evernote-sdk-ios-Prefix.pch"; sourceTree = "<group>"; };
+		BEA3436D19BC3A460013D1D5 /* twitterWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twitterWebViewController.h; sourceTree = "<group>"; };
+		BEA3436E19BC3A460013D1D5 /* twitterWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twitterWebViewController.m; sourceTree = "<group>"; };
 		BEB541DB19BBF08900300D63 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BEB541DD19BC015600300D63 /* snapchatAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapchatAddViewController.h; sourceTree = "<group>"; };
 		BEB541DE19BC015600300D63 /* snapchatAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = snapchatAddViewController.m; sourceTree = "<group>"; };
@@ -417,8 +420,10 @@
 				BE3BC90E19BBB56B00DE8A8C /* ViewController.m */,
 				BE58CAB319BBE10E00672B16 /* addNetworksViewViewController.h */,
 				BE58CAB419BBE10E00672B16 /* addNetworksViewViewController.m */,
+				BEA3436E19BC3A460013D1D5 /* twitterWebViewController.m */,
 				BE3BC91019BBB56B00DE8A8C /* Main.storyboard */,
 				BEB541DD19BC015600300D63 /* snapchatAddViewController.h */,
+				BEA3436D19BC3A460013D1D5 /* twitterWebViewController.h */,
 				BEB541DE19BC015600300D63 /* snapchatAddViewController.m */,
 				BE3BC91319BBB56B00DE8A8C /* Images.xcassets */,
 				BE3BC90A19BBB56B00DE8A8C /* Owl.xcdatamodeld */,
@@ -892,6 +897,7 @@
 				BE3BC90C19BBB56B00DE8A8C /* Owl.xcdatamodeld in Sources */,
 				BE58CCA119BBECC900672B16 /* NSData+EvernoteSDK.m in Sources */,
 				BEF5345719BC0F79009B2D8B /* AFURLConnectionOperation.m in Sources */,
+				BEA3436F19BC3A460013D1D5 /* twitterWebViewController.m in Sources */,
 				BEB541DF19BC015600300D63 /* snapchatAddViewController.m in Sources */,
 				BE58CCA619BBECC900672B16 /* ENNoteContent.m in Sources */,
 				BEF5345419BC0F79009B2D8B /* AFHTTPSessionManager.m in Sources */,

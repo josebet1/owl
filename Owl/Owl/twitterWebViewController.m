@@ -1,20 +1,18 @@
 //
-//  snapchatAddViewController.m
+//  twitterWebViewController.m
 //  Owl
 //
-//  Created by Jason Scharff on 9/6/14.
+//  Created by Jason Scharff on 9/7/14.
 //  Copyright (c) 2014 Owl Group. All rights reserved.
 //
 
-#import "snapchatAddViewController.h"
-#import "AFHTTPRequestOperation.h"
-#import "AFHTTPRequestOperationManager.h"
+#import "twitterWebViewController.h"
 
-@interface snapchatAddViewController ()
+@interface twitterWebViewController ()
 
 @end
 
-@implementation snapchatAddViewController
+@implementation twitterWebViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,67 +23,9 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self prepNavBar];
-    [self setBackground];
-    [self.view bringSubviewToFront:self.usernameField];
-    [self.view bringSubviewToFront:self.passwordField];
-    [self.view bringSubviewToFront:self.header];
-    
-    UIColor *color = [self colorWithHexString:@"E8E8E8"];
-    [self.header setTextColor:color];
-    self.usernameField.layer.cornerRadius = 10;
-    self.passwordField.layer.cornerRadius = 10;
-    self.passwordField.secureTextEntry = YES;
-    self.passwordField.returnKeyType = UIReturnKeyGo;
-    self.passwordField.delegate = self;
-
-    
-    // Do any additional setup after loading the view.
-}
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    NSString *username = self.usernameField.text;
-    NSString *password = self.passwordField.text;
-    NSString *fb_id =[[NSUserDefaults standardUserDefaults] stringForKey:@"id"];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"fb_id": fb_id, @"username" : username, @"password" : password};
-    [manager POST:@"http://owl.joseb.me/snapchat_access.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if([responseObject[@"status"]  isEqual: @"success"])
-        {
-           [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"snapchatLoggedIn"];
-            [self performSegueWithIdentifier:@"addNetworks" sender:self];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-    
-    
-    //owl.joseb.me/snapchat_access.php
-    //fb_id
-    //username
-    //password
-    
-    return YES;
-}
-
-
-
--(void)setBackground
-{
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"OwlBackground.png"]];
-    backgroundView.frame = self.view.bounds;
-    [[self view] addSubview:backgroundView];
-}
-
 
 -(void)prepNavBar
 {
-    
     
     UIColor *color = [self colorWithHexString:@"ffffff"];
     self.navigationController.navigationBar.tintColor = color;
@@ -97,6 +37,7 @@
                                     color,NSForegroundColorAttributeName,
                                     color,NSBackgroundColorAttributeName,[UIFont fontWithName:@"AvenirNext-UltraLight" size:25.0f],NSFontAttributeName,nil];
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
+    
     
     
     self.navigationController.navigationBar.barTintColor = [self colorWithHexString:@"BD13B1"];
@@ -140,6 +81,25 @@
                            alpha:1.0f];
 }
 
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self prepNavBar];
+    [self createWebView];
+    
+    // Do any additional setup after loading the view.
+}
+
+-(void)createWebView
+{
+    UIWebView *webview = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    NSString *url= [[NSUserDefaults standardUserDefaults] stringForKey:@"twitterUrl"];
+    NSURL *nsurl=[NSURL URLWithString:url];
+    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+    [webview loadRequest:nsrequest];
+    [self.view addSubview:webview];
+}
 
 - (void)didReceiveMemoryWarning
 {

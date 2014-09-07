@@ -32,20 +32,10 @@
 
 - (IBAction)addTwitter:(id)sender
 {
-    ACAccountStore *account = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    [account requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error)
-     {
-         // Did user allow us access?
-         if (granted == YES)
-         {
-             // Populate array with all available Twitter accounts
-             NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
-            ACAccount *twitterAcount = [arrayOfAccounts objectAtIndex:0];
-         }
-         
-     }];
-     
+    NSString *url = @"http://owl.joseb.me/twitter_auth.php?fb_id=";
+    url = [url stringByAppendingString:[[NSUserDefaults standardUserDefaults] stringForKey:@"id"]];
+    [[NSUserDefaults standardUserDefaults] setObject:url forKey:@"twitterUrl"];
+    [self performSegueWithIdentifier:@"twitterWebView" sender:self];
     
 }
 
@@ -74,6 +64,8 @@
     [self.view bringSubviewToFront:self.evernoteButton];
     [self.view bringSubviewToFront:self.snapchatButton];
     [self.view bringSubviewToFront:self.twitterButton];
+    [self.view bringSubviewToFront:self.header];
+    self.header.textColor = [self colorWithHexString:@"e8e8e8"];
     
     if([[ENSession sharedSession] isAuthenticated])
     {
@@ -110,6 +102,13 @@
                                     color,NSBackgroundColorAttributeName,[UIFont fontWithName:@"AvenirNext-UltraLight" size:25.0f],NSFontAttributeName,nil];
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
     [self.navigationItem setHidesBackButton:YES];
+    
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+
     
     
     self.navigationController.navigationBar.barTintColor = [self colorWithHexString:@"BD13B1"];

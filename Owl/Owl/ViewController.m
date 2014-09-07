@@ -28,6 +28,16 @@
     [self.view bringSubviewToFront:self.header];
     [self.view bringSubviewToFront:self.logInButton];
     [self.header setTextColor:[self colorWithHexString:@"e8e8e8"]];
+    [self.logInButton setTitleColor:[self colorWithHexString:@"e8e8e8"] forState:UIControlStateNormal];
+    
+    [self.logInButton.layer setBorderWidth:1.0];
+    UIColor *borderColor = [self colorWithHexString:@"42DA6F"];
+    [[self.logInButton layer] setBorderColor:borderColor.CGColor];
+    self.logInButton.layer.cornerRadius = 8;
+    
+    
+   
+
     
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -42,7 +52,6 @@
 
 -(void)prepNavBar
 {
-    
     
     UIColor *color = [self colorWithHexString:@"ffffff"];
     self.navigationController.navigationBar.tintColor = color;
@@ -61,6 +70,9 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"Owl";
 }
+
+
+
 
 
 
