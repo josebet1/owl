@@ -95,6 +95,7 @@
 {
     UIWebView *webview = [[UIWebView alloc]initWithFrame:self.view.bounds];
     NSString *url= [[NSUserDefaults standardUserDefaults] stringForKey:@"twitterUrl"];
+    NSLog(url);
     NSURL *nsurl=[NSURL URLWithString:url];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
     [webview loadRequest:nsrequest];

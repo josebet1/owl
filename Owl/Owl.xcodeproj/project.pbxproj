@@ -119,8 +119,6 @@
 		BEF5345819BC0F79009B2D8B /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF5344D19BC0F79009B2D8B /* AFURLRequestSerialization.m */; };
 		BEF5345919BC0F79009B2D8B /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF5344F19BC0F79009B2D8B /* AFURLResponseSerialization.m */; };
 		BEF5345A19BC0F79009B2D8B /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF5345119BC0F79009B2D8B /* AFURLSessionManager.m */; };
-		BEF5345C19BC1D34009B2D8B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF5345B19BC1D34009B2D8B /* Social.framework */; };
-		BEF5348F19BC28DF009B2D8B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF5348E19BC28DF009B2D8B /* Accounts.framework */; };
 		BEF6FD8A19BBB98400A840A9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF6FD8919BBB98400A840A9 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -351,8 +349,6 @@
 		BEF5344F19BC0F79009B2D8B /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		BEF5345019BC0F79009B2D8B /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		BEF5345119BC0F79009B2D8B /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		BEF5345B19BC1D34009B2D8B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		BEF5348E19BC28DF009B2D8B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BEF6FD8919BBB98400A840A9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -361,8 +357,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEF5348F19BC28DF009B2D8B /* Accounts.framework in Frameworks */,
-				BEF5345C19BC1D34009B2D8B /* Social.framework in Frameworks */,
 				BEB541DC19BBF08900300D63 /* libxml2.dylib in Frameworks */,
 				BE58CAC519BBEB2700672B16 /* MobileCoreServices.framework in Frameworks */,
 				BEF6FD8A19BBB98400A840A9 /* FacebookSDK.framework in Frameworks */,
@@ -382,8 +376,6 @@
 		BE3BC8F719BBB56B00DE8A8C = {
 			isa = PBXGroup;
 			children = (
-				BEF5348E19BC28DF009B2D8B /* Accounts.framework */,
-				BEF5345B19BC1D34009B2D8B /* Social.framework */,
 				BEF5343E19BC0F79009B2D8B /* AFNetworking */,
 				BEB541DB19BBF08900300D63 /* libxml2.dylib */,
 				BE58CBD719BBECC900672B16 /* evernote-sdk-ios */,
