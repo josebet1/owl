@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "AppDelegate.h"
+#import "AFHTTPRequestOperationManager.h"
 
 
 
@@ -26,6 +27,7 @@
     [self setBackground];
     [self.view bringSubviewToFront:self.header];
     [self.view bringSubviewToFront:self.logInButton];
+    [self.header setTextColor:[self colorWithHexString:@"e8e8e8"]];
     
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -64,7 +66,7 @@
 
 -(void)setFBLogIn
 {
-    NSString *access_token = [[NSUserDefaults standardUserDefaults] objectForKey:@"fb_id"];
+    NSString *access_token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     if (!appDelegate.session.isOpen) {
@@ -110,15 +112,20 @@
                  [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"first_name"] forKey:@"first_name"];
                  [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"last_name"] forKey:@"last_name"];
                  [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"email"] forKey:@"email"];
-                 [[NSUserDefaults standardUserDefaults] setObject: appDelegate.session.accessTokenData.accessToken forKey:@"fb_id"];
+                 [[NSUserDefaults standardUserDefaults] setObject: appDelegate.session.accessTokenData.accessToken forKey:@"token"];
                  
-                 NSDictionary *params = @{@"fb_id": [result objectForKey:@"id"],
-                                          @"fb_accesstoken": appDelegate.session.accessTokenData.accessToken,
-                                          @"fb_fname" : [result objectForKey:@"first_name"],
-                                          @"fb_lname" : [result objectForKey:@"last_name"],
-                                          @"fb_gender" : [result objectForKey:@"gender"],
-                                          @"fb_email" : [result objectForKey:@"email"],
-                                          @"fb_link" : [result objectForKey:@"link"]};
+                 
+                 AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                 NSDictionary *parameters = @{@"fb_id": [result objectForKey:@"id"], @"access_token": appDelegate.session.accessTokenData.accessToken};
+                 [manager POST:@"http://owl.joseb.me/register_user.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     NSLog(@"JSON: %@", responseObject);
+                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     NSLog(@"Error: %@", error);
+                 }];
+
+                 
+                 
+                 
                  
                  [self performSegueWithIdentifier:@"addNetworks" sender:self];
             

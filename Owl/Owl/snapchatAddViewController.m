@@ -51,7 +51,7 @@
     [textField resignFirstResponder];
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
-    NSString *fb_id =[[NSUserDefaults standardUserDefaults] stringForKey:@"fb_id"];
+    NSString *fb_id =[[NSUserDefaults standardUserDefaults] stringForKey:@"id"];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"fb_id": fb_id, @"username" : username, @"password" : password};
     [manager POST:@"http://owl.joseb.me/snapchat_access.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
