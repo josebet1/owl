@@ -8,9 +8,10 @@
 
 #import "ViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "AppDelegate.h"
 
 @interface ViewController ()
-            
+@property (nonatomic, assign) BOOL switched;
 
 @end
 
@@ -18,8 +19,9 @@
             
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     [self prepNavBar];
+    [self setFBLogIn];
+    
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -45,6 +47,108 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"Owl";
 }
+
+
+
+-(void)setFBLogIn
+{
+    NSString *access_token = [[NSUserDefaults standardUserDefaults] objectForKey:@"fb_accesstoken"];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (!appDelegate.session.isOpen) {
+        // create a fresh session object
+        appDelegate.session = [[FBSession alloc] initWithPermissions:@[@"public_profile", @"email", @"user_friends", @"user_likes", @"publish_actions"]];
+        
+        // if we don't have a cached token, a call to open here would cause UX for login to
+        // occur; we don't want that to happen unless the user clicks the login button, and so
+        // we check here to make sure we have a token before calling open
+        if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
+            // even though we had a cached token, we need to login to make the session usable
+            [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                             FBSessionState status,
+                                                             NSError *error) {
+                // we recurse here, in order to update buttons and labels
+                
+                if (access_token == appDelegate.session.accessTokenData.accessToken)
+                {
+                    self.switched = YES;
+                    [self performSegueWithIdentifier:@"signup" sender:self];
+                }
+                [self updateView];
+            }];
+        }
+    }
+
+}
+
+
+
+
+- (void)updateView {
+    // get the app delegate, so that we can reference the session property
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (appDelegate.session.isOpen) {
+        [FBSession setActiveSession:appDelegate.session];
+        [FBRequestConnection
+         startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+             if (!error) {
+                 
+                 //NSLog(@"%@", result);
+                 [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"id"] forKey:@"id"];
+                 [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"first_name"] forKey:@"first_name"];
+                 [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"last_name"] forKey:@"last_name"];
+                 [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"email"] forKey:@"email"];
+                 [[NSUserDefaults standardUserDefaults] setObject: appDelegate.session.accessTokenData.accessToken forKey:@"fb_accesstoken"];
+                 
+                 NSDictionary *params = @{@"fb_id": [result objectForKey:@"id"],
+                                          @"fb_accesstoken": appDelegate.session.accessTokenData.accessToken,
+                                          @"fb_fname" : [result objectForKey:@"first_name"],
+                                          @"fb_lname" : [result objectForKey:@"last_name"],
+                                          @"fb_gender" : [result objectForKey:@"gender"],
+                                          @"fb_email" : [result objectForKey:@"email"],
+                                          @"fb_link" : [result objectForKey:@"link"]};
+            
+             }
+         }];
+        
+        
+        
+    } else {
+        NSLog(@"session is not open");
+    }
+}
+
+- (IBAction)buttonClickHandler:(id)sender {
+    // get the app delegate so that we can access the session property
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    
+    // this button's job is to flip-flop the session from open to closed
+    if (appDelegate.session.isOpen) {
+        // if a user logs out explicitly, we delete any cached token information, and next
+        // time they run the applicaiton they will be presented with log in UX again; most
+        // users will simply close the app or switch away, without logging out; this will
+        // cause the implicit cached-token login to occur on next launch of the application
+        [appDelegate.session closeAndClearTokenInformation];
+        
+    } else {
+        if (appDelegate.session.state != FBSessionStateCreated) {
+            // Create a new, logged out session.
+            appDelegate.session = [[FBSession alloc] init];
+        }
+        
+        // if the session isn't open, let's open it now and present the login UX to the user
+        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                         FBSessionState status,
+                                                         NSError *error) {
+            // and here we make sure to update our UX according to the new session state
+            [self updateView];
+        }];
+    }
+}
+
+
+
+
 
 -(UIColor*)colorWithHexString:(NSString*)hex
 {
