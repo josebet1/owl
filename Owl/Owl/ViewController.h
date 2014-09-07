@@ -12,6 +12,8 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet FBLoginView *loginView;
+@property (strong, nonatomic) IBOutlet UILabel *header;
+@property (strong, nonatomic) IBOutlet UIButton *logInButton;
 
 @end
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="l8i-U5-TQG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="l8i-U5-TQG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,11 +13,12 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7w-6t-L27">
-                                <rect key="frame" x="85" y="373" width="151" height="30"/>
+                                <rect key="frame" x="85" y="269" width="151" height="30"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                 <state key="normal" title="Log In With Facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,14 +26,123 @@
                                     <action selector="buttonClickHandler:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bgA-hv-CaM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Owl" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="245" translatesAutoresizingMaskIntoConstraints="NO" id="Dlu-8Z-Bc2">
+                                <rect key="frame" x="38" y="95" width="245" height="144"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="45"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="UIm-Bq-6IF"/>
+                    <connections>
+                        <outlet property="header" destination="Dlu-8Z-Bc2" id="jNL-vi-PTK"/>
+                        <outlet property="logInButton" destination="f7w-6t-L27" id="Aie-Iw-QF0"/>
+                        <segue destination="TO5-ra-Gsj" kind="push" identifier="addNetworks" id="GpU-f8-FUE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="639" y="-61"/>
+        </scene>
+        <!--Add Networks View View Controller-->
+        <scene sceneID="onS-Zl-vg1">
+            <objects>
+                <viewController id="TO5-ra-Gsj" customClass="addNetworksViewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Opc-zr-I6G"/>
+                        <viewControllerLayoutGuide type="bottom" id="TKt-jD-y7S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m2v-64-Sda">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acI-21-rgC">
+                                <rect key="frame" x="20" y="193" width="125" height="125"/>
+                                <state key="normal" title="Button" image="twitflat.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnu-ct-nhk">
+                                <rect key="frame" x="20" y="345" width="125" height="125"/>
+                                <state key="normal" title="Button" image="everflat.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addEvernote:" destination="TO5-ra-Gsj" eventType="touchUpInside" id="AVj-hr-n0Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOf-FX-GxH">
+                                <rect key="frame" x="20" y="39" width="125" height="125"/>
+                                <state key="normal" title="Button" image="snapflat.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addSnapchat:" destination="TO5-ra-Gsj" eventType="touchUpInside" id="bVW-Df-Qsr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1bJ-JQ-aMo"/>
+                    <connections>
+                        <outlet property="evernoteButton" destination="pnu-ct-nhk" id="jre-kx-A81"/>
+                        <outlet property="snapchatButton" destination="rOf-FX-GxH" id="z5u-N4-lIY"/>
+                        <outlet property="twitterButton" destination="acI-21-rgC" id="L42-tA-mPz"/>
+                        <segue destination="bXG-t8-Ltm" kind="push" identifier="snapView" id="eeV-OB-dcO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JRU-qz-E0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="-99"/>
+        </scene>
+        <!--Snapchat Add View Controller-->
+        <scene sceneID="Fqr-pT-hVC">
+            <objects>
+                <viewController id="bXG-t8-Ltm" customClass="snapchatAddViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nl3-jt-4fO"/>
+                        <viewControllerLayoutGuide type="bottom" id="ju7-wb-KAX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E6F-9H-KBU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Snapchat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w44-Vl-1Ib">
+                                <rect key="frame" x="32" y="51" width="256" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qgv-Pr-25c">
+                                <rect key="frame" x="27" y="188" width="261" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yJm-5m-x7I">
+                                <rect key="frame" x="27" y="235" width="261" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kyE-G5-fSE"/>
+                    <connections>
+                        <outlet property="header" destination="w44-Vl-1Ib" id="Vz0-7B-Ryd"/>
+                        <outlet property="passwordField" destination="yJm-5m-x7I" id="RTB-VF-b3m"/>
+                        <outlet property="usernameField" destination="qgv-Pr-25c" id="Evy-Zn-Jfx"/>
+                        <segue destination="TO5-ra-Gsj" kind="push" id="3bY-9N-ZWJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zE9-2E-MSj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vVu-dT-LnH">
@@ -53,9 +163,17 @@
             <point key="canvasLocation" x="107" y="-61"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="everflat.png" width="512" height="512"/>
+        <image name="snapflat.png" width="512" height="512"/>
+        <image name="twitflat.png" width="512" height="512"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="GpU-f8-FUE"/>
+    </inferredMetricsTieBreakers>
 </document>

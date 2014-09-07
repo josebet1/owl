@@ -10,6 +10,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "AppDelegate.h"
 
+
+
 @interface ViewController ()
 @property (nonatomic, assign) BOOL switched;
 
@@ -21,10 +23,20 @@
     [super viewDidLoad];
     [self prepNavBar];
     [self setFBLogIn];
+    [self setBackground];
+    [self.view bringSubviewToFront:self.header];
+    [self.view bringSubviewToFront:self.logInButton];
     
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+-(void)setBackground
+{
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"OwlBackground.png"]];
+    backgroundView.frame = self.view.bounds;
+    [[self view] addSubview:backgroundView];
+}
+
 
 -(void)prepNavBar
 {
@@ -52,7 +64,7 @@
 
 -(void)setFBLogIn
 {
-    NSString *access_token = [[NSUserDefaults standardUserDefaults] objectForKey:@"fb_accesstoken"];
+    NSString *access_token = [[NSUserDefaults standardUserDefaults] objectForKey:@"fb_id"];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     if (!appDelegate.session.isOpen) {
@@ -98,7 +110,7 @@
                  [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"first_name"] forKey:@"first_name"];
                  [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"last_name"] forKey:@"last_name"];
                  [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"email"] forKey:@"email"];
-                 [[NSUserDefaults standardUserDefaults] setObject: appDelegate.session.accessTokenData.accessToken forKey:@"fb_accesstoken"];
+                 [[NSUserDefaults standardUserDefaults] setObject: appDelegate.session.accessTokenData.accessToken forKey:@"fb_id"];
                  
                  NSDictionary *params = @{@"fb_id": [result objectForKey:@"id"],
                                           @"fb_accesstoken": appDelegate.session.accessTokenData.accessToken,
@@ -107,6 +119,8 @@
                                           @"fb_gender" : [result objectForKey:@"gender"],
                                           @"fb_email" : [result objectForKey:@"email"],
                                           @"fb_link" : [result objectForKey:@"link"]};
+                 
+                 [self performSegueWithIdentifier:@"addNetworks" sender:self];
             
              }
          }];

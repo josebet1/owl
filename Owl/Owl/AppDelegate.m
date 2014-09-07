@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "ENSDK.h"
+
+
 
 @interface AppDelegate ()
             
@@ -27,6 +30,7 @@
     // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
     BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.session];
     
+    
     // You can add your app-specific url handling code here if needed
     
     return wasHandled;
@@ -36,6 +40,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [FBLoginView class];
+    
+    // Initial development is done on the sandbox service
+    // When you want to connect to production, just pass "nil" for "optionalHost"
+    NSString *SANDBOX_HOST = ENSessionHostSandbox;
+    
+    // Fill in the consumer key and secret with the values that you received from Evernote
+    // To get an API key, visit http://dev.evernote.com/documentation/cloud/
+    NSString *CONSUMER_KEY = @"jasonscharff";
+    NSString *CONSUMER_SECRET = @"560656e6f5d84d88";
+    
+    [ENSession setSharedSessionConsumerKey:CONSUMER_KEY
+                            consumerSecret:CONSUMER_SECRET
+                              optionalHost:SANDBOX_HOST];
     
     // Override point for customization after application launch.
     return YES;
